@@ -1,0 +1,41 @@
+body{
+  --bg-color: #fff;
+  --text-color: #000;
+}
+body.dark{
+  --bg-color: #000;
+  --text-color: #fff;
+}
+body.pink{
+  --bg-color: #ffe8f4;
+  --text-color: #f9c;
+}
+
+#change-theme{
+  width: 15rem;
+  text-intendant: 3.5rem; 
+}
+#change-theme ul{
+  display: none;
+  margin-top: 0.8rem;
+  padding: 0;
+  border: 1px solid #EEE;
+  list-style: none;
+}
+#change-theme:hover ul{
+  display: block;
+  width: 7rem;
+  overflow: hidden;
+  border-radius: 5%;
+}
+#change-theme ul li{
+  text-align: center;
+  border-top: 1px solid #EEE;
+}
+#change-theme ul li:first-child{
+  border-top: 0;
+}
+#change-theme ul li:hover{
+  background-color: #f8f8f8;
+  color: #0A0;
+}
