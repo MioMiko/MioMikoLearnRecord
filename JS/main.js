@@ -2,6 +2,7 @@ const body=document.querySelector('body');
 const nav=body.querySelector('nav');
 const aside=body.querySelector('aside');
 const article=body.querySelector('article');
+const css=document.querySelector('#link');
 //生成功能
 //生成链接路径
 let rootURL=null;
@@ -12,6 +13,17 @@ let rootURL=null;
   }
   rootURL=rootURLArr.join('');
 }
+//生成CSS文件链接
+{
+  let cssInner=[];
+  cssInner.push('<link rel="stylesheet" type="text/css" href="');
+  cssInner.push(rootURL);
+  cssInner.push('CSS/main.css"><link rel="stylesheet" type="text/css" href="');
+  cssInner.push(rootURL);
+  cssInner.push('CSS/theme.css">');
+  css.innerHTML=cssInner.join('');
+}
+
 //生成导航栏
 {
   let navInner=[]
