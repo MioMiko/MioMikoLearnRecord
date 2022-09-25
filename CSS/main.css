@@ -1,11 +1,17 @@
+/*屏幕大小适配*/
+html {
+  font-size: 32px;
+}
+@meadia screen and (min-width: 1000px){
+  html {
+    font-size: 16px;
+  }
+}
 /*初始化*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-html{
-  font-size: 32px;
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -91,9 +97,6 @@ nav ul#header a{
 }
 nav ul#header a:hover{
   color: var(--nav-ahover-color,#e96900);
-}
-nav ul#header {
-  float: left;
 }
 nav ul#header li {
   float: left;
