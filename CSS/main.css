@@ -2,7 +2,7 @@
 html {
   font-size: 32px;
 }
-@meadia screen and (min-width: 600px){
+@media screen and (min-width: 1000px) {
   html {
     font-size: 16px;
   }
@@ -26,38 +26,72 @@ a {
 button {
   cursor:pointer;
 }
-h1{
+code {
+  background: var(--code-bg-color,#eee);
+  border-radius: 0.3rem;
+  padding: 0 0.3rem;
+}
+h1 {
   font-size: 2rem;
-  margin: 0 0 0.8rem;
+  margin: 0.8rem 0;
 }
-h2{
+h2 {
   font-size: 1.75rem;
-  margin: 0 0 0.6rem;
+  margin: 0.6rem 0;
 }
-h3{
+h3 {
   font-size: 1.5rem;
-  margin: 0 0 0.4rem
+  margin: 0.4rem 0;
 }
-h4{
+h4 {
   font-size: 1.25rem;
-  margin: 0 0 0.2rem;
+  margin: 0.2rem 0;
 }
-h5{
+h5 {
   font-size: 1rem;
-  margin: 0 0 0.2rem;
+  margin: 0.2rem 0;
 }
-h6{
+h6 {
   font-size: 1rem;
 }
 hr {
  margin-bottom: 0.5rem;
 }
 i {
-color: var(--light-text-color,#ddd);
+color: var(--light-text-color,#666);
 }
 img{
   width: 60%;
   vertical-align: middle;
+}
+kbd {
+  border: 2px solid var(--border-color,#eee);
+  border-radius: 0.2rem;
+}
+pre {
+  margin: 0.8rem 0;
+}
+pre > code{
+  display: block;
+  padding: 0.8rem;
+}
+table {
+  margin: 0.8rem 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td {
+  border: 2px solid var(--border-color,#ddd);
+}
+th {
+  background-color: var(--th-bg-color,#e5e5e5);
+  border: 2px solid var(--th-border-color,#d9d9d9);
+}
+tr {
+  background: var(--tr-bg-color,#fff);
+}
+tr:nth-child(2n) {
+  background: var(--tr2-bg-color,#f8f8f8);
 }
 .align-left {
   text-align: left;
@@ -92,7 +126,7 @@ nav {
   color: var(--nav-color,#fff);
 }
     /*导航栏左侧*/
-nav ul#header a{
+nav a{
   color: var(--nav-color,#fff);
 }
 nav ul#header a:hover{
@@ -174,16 +208,22 @@ article.collapsed {
 /*语言列表*/
 article .language-list ul {
   margin: auto;
+  margin-top: 1rem;
   width: 26rem;
 }
 article .language-list ul li {
   float: left;
-  margin: 0 0.5rem 1rem 0.5rem;
+  margin: 0.5rem;
   height: 11rem; width: 12rem;
   overflow: hidden;
   border: 2px solid var(--border-color,#eee);
-  border-radius: 10px;
+  border-radius: 0.4rem;
   list-style: none;
+  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.3);
+  transition: transform 0.2s ease 0s;
+}
+article .language-list ul li:hover{
+  transform: translateY(-0.5rem); 
 }
 article .language-list ul li img{
   width: 100%;
@@ -195,18 +235,42 @@ article .language-list ul li figure figcaption{
 }
 article .language-list ul li h1{
   margin-top: 0.1rem;
+  line-height: 4rem;
   font-weight: 400;
+}
+/*版权声明列表*/
+article .copyright-list {
+  width: 100%;
+}
+article .copyright-list>li {
+  float: left;
+  margin: 0.5rem 1rem 0.5rem 0;
+  width: 100%; height: 5rem;
+  overflow: hidden;
+  border: 2px solid var(--border-color,#eee);
+  border-radius: 0.4rem;
+  list-style: none;
+  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.3);
+}
+article .copyright-list li img{
+  float: left;
+  height: 100%; width: auto;
+}
+article .copyright-list li ul{
+  float: left;
+  margin-left: 0.5rem;
+  list-style: none;
 }
 /*黑幕效果*/
 .blackscreen {
-     background-color: var(--text-color,#000);
-     color: (--text-color,#000);
-     transition: color 0.25s ease-out 0s, background-color 0.25s ease-out 0s;
+  background-color: var(--text-color,#000);
+  color: (--text-color,#000);
+  transition: color 0.25s ease-out 0s, background-color 0.25s ease-out 0s;
 }
 .blackscreen:hover {
-     color: var(--bg-color,#fff);
+  color: var(--bg-color,#fff);
 }
 .half-blackscreen .black-screen{
-     color: black;
-     background-color: var(--light-text-color,#ddd);
+  color: black;
+  background-color: var(--light-text-color,#ddd);
 }
