@@ -1,6 +1,6 @@
 /*屏幕大小适配*/
 html {
-  font-size: 32px;
+  font-size: 9mm;
 }
 @media screen and (min-width: 1000px) {
   html {
@@ -15,7 +15,6 @@ html {
 }
 body {
   -webkit-font-smoothing: antialiased;
-  height: 150%;
   background: var(--bg-color,#fff);
   color: var(--text-color,#000);
   transition: color 0.25s ease-out 0s, background-color 0.25s ease-out 0s;
@@ -118,16 +117,18 @@ tr:nth-child(2n) {
 }
 /*导航栏*/
 nav {
-  position: fixed;
-  width: 100%; height: 3rem;
-  line-height: 3rem;
-  font-size: 1rem;
-  background: var(--nav-bg-color,#333);
+  z-index: 50;
   color: var(--nav-color,#fff);
 }
     /*导航栏左侧*/
 nav a{
   color: var(--nav-color,#fff);
+}
+nav ul#header {
+  position: fixed;
+  width: 100%;
+  line-height: 3rem;
+  background: var(--nav-bg-color,#333);
 }
 nav ul#header a:hover{
   color: var(--nav-ahover-color,#e96900);
@@ -144,7 +145,7 @@ nav ul#header li.current {
 }
     /*折叠侧边栏*/
 nav span#collapse-aside{
-  position: fixed; z-index: 100;
+  position: fixed;
   right: 0; bottom: 0;
   font-size: 2rem;
   color: var(--a-color,#42b983);
@@ -153,7 +154,6 @@ nav span#collapse-aside{
 nav ul#tools {
   position: fixed;
   right: 0; bottom: 20%;
-  font-size: 1rem;
   line-height: 1.1rem;
 }
 nav ul#tools li{
@@ -166,7 +166,7 @@ nav ul#tools li{
 }
 /*侧边栏*/
 aside {
-  position: fixed; z-index: 50;
+  position: fixed; z-index: 100;
   top: 3rem;
   width: 0; height: calc(100% - 3rem);
   overflow: auto;
