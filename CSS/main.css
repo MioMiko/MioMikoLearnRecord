@@ -1,10 +1,21 @@
 /*屏幕大小适配*/
 html {
-  font-size: 9mm;
+  font-size: 16px;
 }
-@media screen and (min-width: 1000px) {
+@media screen and (max-width: 980px) and (min-width: 980px){
   html {
-    font-size: 16px;
+    font-size: 4vw;
+  }
+  article.collapsed {
+    margin-left: 1rem !important;
+  }
+}
+@media screen and (max-width: 750px){
+  html {
+    font-size: 4vw;
+  }
+  article.collapsed {
+    margin-left: 1rem !important;
   }
 }
 /*初始化*/
@@ -30,6 +41,9 @@ code {
   border-radius: 0.3rem;
   padding: 0 0.3rem;
 }
+dd {
+  margin-left: 1rem;
+}
 h1 {
   font-size: 2rem;
   margin: 0.8rem 0;
@@ -54,7 +68,8 @@ h6 {
   font-size: 1rem;
 }
 hr {
- margin-bottom: 0.5rem;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
 }
 i {
 color: var(--light-text-color,#666);
@@ -73,6 +88,7 @@ pre {
 pre > code{
   display: block;
   padding: 0.8rem;
+  overflow: auto;
 }
 table {
   margin: 0.8rem 0;
@@ -120,12 +136,13 @@ nav {
   z-index: 50;
   color: var(--nav-color,#fff);
 }
-    /*导航栏左侧*/
+    /*导航栏顶部*/
 nav a{
   color: var(--nav-color,#fff);
 }
 nav ul#header {
   position: fixed;
+  display: flex;
   width: 100%;
   line-height: 3rem;
   background: var(--nav-bg-color,#333);
@@ -134,8 +151,7 @@ nav ul#header a:hover{
   color: var(--nav-ahover-color,#e96900);
 }
 nav ul#header li {
-  float: left;
-  width: 6rem; height:3rem;
+  width: 6rem; height: 3rem;
   text-align: center;
   list-style: none;
 }
@@ -168,10 +184,12 @@ nav ul#tools li{
 aside {
   position: fixed; z-index: 100;
   top: 3rem;
-  width: 0; height: calc(100% - 3rem);
+  width: 20rem; height: calc(100% - 3rem);
   overflow: auto;
+  background: var(--bg-color,#fff);
   border-right: 2px solid var(--border-color,#eee);
-  transition: width 0.15s linear 0s;
+  transform: translateX(-20rem);
+  transition: transform 0.15s linear 0s;
 }
 aside a{
   color: var(--text-color,#000);
@@ -181,18 +199,21 @@ aside a:hover{
   text-decoration:underline;
 }
 aside.expanded {
-  width: 20rem;
+  transform: translateX(0);
 }
-aside h1{
+aside h1 {
   text-align: center;
   font-weight: 400;
 }
-aside ul{
-  margin: 1rem;
+aside hr {
+  width: 80%
+}
+aside dl {
+  margin: 0.5rem;
 }
 /*内容*/
 article {
-  margin: 0 1rem 0 1rem;
+  margin: 0 1rem;
   padding-top:4rem;
   transition: margin-left 0.15s linear 0s;
 }
@@ -206,14 +227,14 @@ article.collapsed {
   margin-left: 21rem;
 }
 /*语言列表*/
-article .language-list ul {
-  margin: auto;
+article ul.language-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 1rem;
-  width: 26rem;
 }
-article .language-list ul li {
-  float: left;
-  margin: 0.5rem;
+article ul.language-list li {
+  margin: 0.8rem 0.6rem;
   height: 11rem; width: 12rem;
   overflow: hidden;
   border: 2px solid var(--border-color,#eee);
@@ -222,18 +243,18 @@ article .language-list ul li {
   box-shadow: 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.3);
   transition: transform 0.2s ease 0s;
 }
-article .language-list ul li:hover{
+article ul.language-list li:hover{
   transform: translateY(-0.5rem); 
 }
-article .language-list ul li img{
+article ul.language-list li img{
   width: 100%;
 }
-article .language-list ul li figure figcaption{
+article ul.language-list li figure figcaption{
   margin-top: 0.2rem;
   font-size: 0.7rem;
   line-height: 0.8rem;
 }
-article .language-list ul li h1{
+article ul.language-list li h1{
   margin-top: 0.1rem;
   line-height: 4rem;
   font-weight: 400;
