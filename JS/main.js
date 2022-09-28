@@ -54,9 +54,10 @@ const collapseAside=nav.querySelector('#collapse-aside');
 //其他功能
 
 //导航栏显示功能
-//section: 0-homepage 1-doc 2-examples
-navSections[section].classList.add('current');
-
+//section: 0-homepage 1-doc 2-examples 3-copyright
+if(section!==null){
+  navSections[section].classList.add('current');
+}
 //折叠侧边栏功能
 if(aside){
   if(!(isNarrowScreen.matches)){
