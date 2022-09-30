@@ -35,7 +35,7 @@ let rootURL=null;
   navInner.push(rootURL);
   navInner.push('examples/examples_index.html"><li id="examples">实例</li></a><a href="');
   navInner.push(rootURL);
-  navInner.push('copyright.html"><li id="copyright">版权声明</li></a></ul><ul id="tools"><a href="#top"><li>返回顶部</li></a><li id="hide-blackscreen">隐藏黑幕</li></ul><span id="collapse-aside">≡</span>');
+  navInner.push('copyright.html"><li id="copyright">版权声明</li></a><li id="filler"></li><a><li></li></a></ul><ul id="tools"><a href="#top"><li>返回顶部</li></a><li id="hide-blackscreen">隐藏黑幕</li></ul><span id="collapse-aside">≡</span>');
   nav.innerHTML=navInner.join('');
 }
 
@@ -43,6 +43,7 @@ const isNarrowScreen=window.matchMedia('(max-width: 1000px)');
 
 const navSections=[nav.querySelector('#homepage'),nav.querySelector('#doc'),nav.querySelector('#examples'),nav.querySelector('#copyright')];
 
+const is_blackscreen_exist=article.querySelector('.blackscreen');
 const hide_blackscreen=nav.querySelector('#hide-blackscreen');
 
 const collapseAside=nav.querySelector('#collapse-aside');
@@ -72,7 +73,11 @@ if(aside){
   collapseAside.classList.add('hide');
 }
   
-  //隐藏黑幕功能
-hide_blackscreen.addEventListener('click',()=>{
-  body.classList.toggle('half-blackscreen');
-});
+//隐藏黑幕功能
+if(is_blackscreen_exist){
+  hide_blackscreen.addEventListener('click',()=>{
+    body.classList.toggle('half-blackscreen');
+  });
+} else {
+  hide_blackscreen.classList.add('invisible');
+}
