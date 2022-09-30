@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+        <meta http-equiv="Cache-control" content="no-siteapp">
+        <meta name="renderer" content="webkit">
+        <meta name="author" content="美桜御子">
+        <div id="link"></div>
+        <title>注释、主体结构与头部标签</title>
+        <script>
+            const section=1;
+            const rootDistance=2;
+        </script>
+    </head>
+    <body>
+        <nav></nav>
+        <aside></aside>
+        <article>
+            <h1>注释、主体结构与头部标签</h1>
+            <hr>
+            <h2>注释标签</h2>
+            <p>
+                注释标签可以添加在html文档中便于html文档的阅读理解，但不会显示在页面中。
+                <pre><code>&lt;!-- 注释内容 --&gt;</code></pre>
+                <span class="blackscreen">但是查看网页源代码还是可以看见，所以不要塞奇奇怪怪的东西啊kora。</span>
+            </p>
+            <h2>HTML基本结构标签</h2>
+            <p>
+                每个网页都会有一个基本结构标签，页面内容也是在这些标签上书写。
+                <table>
+                    <thead>
+                        <tr><th style="width: 4.7rem;">标签名</th><th style="width: 4.7rem;">定义</th><th>说明</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>&lt;html&gt;&lt;/html&gt;</td><td>根标签</td><td>表示HTML文档的根，其他HTML标签必须包含其内</td></tr>
+                        <tr><td>&lt;head&gt;&lt;/head&gt;</td><td>文档头部</td><td>表示文档头部</td></tr>
+                        <tr><td>&lt;title&gt;&lt;/title&gt;</td><td>文档标题</td><td>表示此文档的表题，包含在文档头部内</td></tr>
+                        <tr><td>&lt;body&gt;&lt;/body&gt;</td><td>文档主体</td><td>表示文档的主体，文档的所有内容都在其内</td></tr>
+                    </tbody>
+                </table>
+                将html标签设置lang属性可以告诉浏览器此页面使用何种语言，例如:
+                <pre><code>&lt;html lang="语言"&gt;&lt;/html&gt;</code></pre>
+                zh-CN 中文 en 英文
+            </p>
+            <h2>title标签</h2>
+            <p>
+                用于设置当前网页的标题，可以显示在浏览器的标签页上，但不会显示在网页中，写在head标签内部。
+                <pre><code>&lt;title&gt;标题&lt;/title&gt;</code></pre>
+            </p>
+            <h2>meta标签</h2>
+            <p>
+                meta用来描述html文档的数据，比如用何种编码显示，作者等，这些内容不会展示在网页中，但是可以被浏览器或搜索引擎识别，写在head标签内部。
+                <ul>
+                    <li>声明编码，一般使用utf-8编码。（必须）</li>
+                    <pre><code>&lt;meta charset="utf-8"&gt;</code></pre>
+                    <li>声明文档类型和编码。</li>
+                    <pre><code>&lt;meta http-equiv="Content-Type" content="text/html;charset=utf-8"&gt;</code></pre>
+                    <li>用来声明网页作者。</li>
+                    <pre><code>&lt;meta name="author" content="作者名称"&gt;</code></pre>
+                    <li>用来描述网页关键词，方便搜索引擎查找。</li>
+                    <pre><code>&lt;meta name="keywords" content="关键词1,关键词2..."&gt;</code></pre>
+                    <li>用来描述概括网页内容。</li>
+                    <pre><code>&lt;meta name="description" content="网页描述，不多于150字"&gt;</code></pre>
+                    <li>网页重定向。</li>
+                    <pre><code>&lt;meta "http-refresh" content="延迟时间（秒）;url=目标地址"&gt;</code></pre>
+                    <li>搜索引擎（或爬虫）对此页面应当遵守的规则。</li>
+                    <pre><code>&lt;meta name="robots" content="值1,值2"&gt;</code></pre>
+                    <p>
+                        all：搜索引擎可以抓取本页面，也能通过本页面的链接抓取其他页面。<br>
+                        none：搜索引擎不能抓取本页面，也不能通过本页面的链接抓取其他页面。<br>
+                        index：搜索引擎可以抓取本页面。<br>
+                        noindex：搜索引擎不能抓取本页面。<br>
+                        follow：搜索引擎可以通过本页面的链接抓取其他页面。<br>
+                        nofollow：搜索引擎不可以通过本页面抓取其他页面。
+                    </p>
+                    <li>优先使用当前浏览器最新版，有Chrome内核则使用Chrome内核。</li>
+                    <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;</code></pre>
+                    <li>用来指定双核浏览器的渲染方式。</li>
+                    <pre><code>&lt;meta name="renderer" content="webkit"&gt;&lt;!-- 使用webkit内核 --&gt;</code></pre>
+                    <li>预解析页面中的标签提升网站性能，这个选项在http协议的网站会自动打开，但https协议不会。</li>
+                    <pre><code>&lt;meta http-equiv="x-dns-prefetch-control" content="on"&gt;</code></pre>
+                    <li>用于优化页面在移动设备上的显示。</li>
+                    <pre><code>&lt;meta name="viewport" content="width=device-width（设备宽度，或具体数值）,height=device-height（设备高度，或具体数值）,intial-scale=初始缩放比例,minium-scale=允许用户缩放到的最小比例,maximum-scale=允许用户缩放的最大比例,user-scalable=用户是否可以手动缩放(no/yes)&gt;</code></pre>
+                    <p>一般移动网页设置的值。</p>
+                    <pre><code>&lt;meta name="viewport" content="width=device-width,intial-scale=1.0"&gt;</code></pre>
+                    <li>忽略数字自动识别为电话号码。</li>
+                    <pre><code>&lt;meta name="format-detection" content="telephone=no"&gt;</code></pre>
+                    <li>忽略自动识别邮箱。</li>
+                    <pre><code>&lt;meta name="format-detection" content="email=no"&gt;</code></pre>
+                </ul>
+            </p>
+        </article>
+        <script src="../../JS/main.js"></script>
+        <script src="../../JS/theme.js"></script>
+        <script src="../../JS/aside/doc/HTML.js"></script>
+    </body>
+</html>
