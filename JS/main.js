@@ -9,7 +9,7 @@ const body=document.querySelector('body');
     pink: ()=>{body.setAttribute('data-theme','pink');},
     syncSystem: ()=>{
       if(systemTheme.matches){setTheme.light();}
-      else {setTheme.dark();}
+      else{setTheme.dark();}
     }
   }
 
@@ -20,12 +20,15 @@ const body=document.querySelector('body');
       localStorage.setItem('theme','followSystem');
     } else if (theme==='followSystem'){
       setTheme.syncSystem();
+    } else if(theme==='light'){
+      setTheme.light();
     } else if (theme==='dark'){
       setTheme.dark();
     } else if (theme==='pink'){
       setTheme.pink();
     }
   }
+  
   systemTheme.addEventListener('change',()=>{
     if(localStorage.getItem('theme')==='followSystem'){
       setTheme.syncSystem();
