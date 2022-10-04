@@ -1,42 +1,5 @@
 const body=document.querySelector('body');
-{
-  const themeList=['dark','pink'];
-  const systemTheme=window.matchMedia('(prefers-color-scheme: light)');
 
-  const setTheme={
-    light: ()=>{body.setAttribute('data-theme','light');},
-    dark: ()=>{body.setAttribute('data-theme','dark');},
-    pink: ()=>{body.setAttribute('data-theme','pink');},
-    syncSystem: ()=>{
-      if(systemTheme.matches){setTheme.light();}
-      else{setTheme.dark();}
-    }
-  }
-
-  {
-    let theme=localStorage.getItem('theme');
-    if(theme===null){
-      setTheme.syncSystem();
-      localStorage.setItem('theme','followSystem');
-    } else if (theme==='followSystem'){
-      setTheme.syncSystem();
-    } else if(theme==='light'){
-      setTheme.light();
-    } else if (theme==='dark'){
-      setTheme.dark();
-    } else if (theme==='pink'){
-      setTheme.pink();
-    }
-  }
-  
-  systemTheme.addEventListener('change',()=>{
-    if(localStorage.getItem('theme')==='followSystem'){
-      setTheme.syncSystem();
-  }});
-}
-//根据本地存储的主题偏好数据同步主题
-
-//生成功能
 //生成链接路径
 let rootURL=null;
 {
@@ -46,6 +9,7 @@ let rootURL=null;
   }
   rootURL=rootURLArr.join('');
 }
+
 //生成CSS文件链接
 {
   const css=document.querySelector('#link');
@@ -58,8 +22,51 @@ let rootURL=null;
   css.innerHTML=cssInner.join('');
 }
 
+//根据本地存储数据同步主题
+{
+  const systemTheme=window.matchMedia('(prefers-color-scheme: light)');
+  //定义设置主题函数对象
+  const setTheme={
+    light: ()=>{body.setAttribute('data-theme','light');},
+    dark: ()=>{body.setAttribute('data-theme','dark');},
+    pink: ()=>{body.setAttribute('data-theme','pink');},
+    syncSystem: ()=>{
+      if(systemTheme.matches){setTheme.light();}
+      else{setTheme.dark();}
+    },
+    followSystem: ()=>{
+      setTheme.syncSystem();
+      systemTheme.addEventListener('change',()=>{
+        setTheme.syncSystem();
+      });
+    }
+  }
+  //同步主题
+  {
+    const theme=localStorage.getItem('theme');
+    switch(theme){
+    case null:
+      localStorage.setItem('theme','followSystem');
+      setTheme.followSystem();
+      break;
+    case 'followSystem':
+      setTheme.followSystem();
+      break;
+    case 'light':
+      setTheme.light();
+      break;
+    case 'dark':
+      setTheme.dark();
+      break;
+    case 'pink':
+      setTheme.pink();
+      break;
+    }
+  }
+}
 
 //以下加载完毕执行
+
 //生成导航栏
 document.addEventListener('DOMContentLoaded',()=>{
 //  const body=document.querySelector('body');
@@ -76,13 +83,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     navInner.push(rootURL);
     navInner.push('examples/examples_index.html"><li id="examples">实例</li></a><a href="');
     navInner.push(rootURL);
-    navInner.push('copyright.html"><li id="copyright">版权声明</li></a><li id="filler"></li><a><li></li></a></ul><ul id="tools"><a href="#top"><li>返回顶部</li></a><li id="hide-blackscreen">隐藏黑幕</li></ul><span id="collapse-aside">≡</span>');
+    navInner.push('copyright.html"><li id="copyright">版权声明</li></a><li id="filler"></li><a href="');
+    navInner.push(rootURL);
+    navInner.push('setting.html"><li><div>设置</div></li></a></ul><ul id="tools"><a href="#top"><li>返回顶部</li></a><li id="hide-blackscreen">隐藏黑幕</li></ul><span id="collapse-aside">≡</span>');
     nav.innerHTML=navInner.join('');
   }
 
   const isNarrowScreen=window.matchMedia('(max-width: 1000px)');
 
-  const navSections=[nav.querySelector('#homepage'),nav.querySelector('#doc'),nav.querySelector('#examples'),nav.querySelector('#copyright')];
+  const navSections=[nav.querySelector('#homepage'),nav.querySelector('#doc'),nav.querySelector('#examples'),nav.querySelector('#copyright'),nav.querySelector('#header :last-child li')];
 
   const is_blackscreen_exist=article.querySelector('.blackscreen');
   const hide_blackscreen=nav.querySelector('#hide-blackscreen');
@@ -117,7 +126,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   //隐藏黑幕功能
   if(is_blackscreen_exist){
     hide_blackscreen.addEventListener('click',()=>{
-      body.classList.toggle('half-blackscreen');
+      if(!('halfBlackscreen' in body.dataset)){
+        body.dataset.halfBlackscreen='';
+      } else {
+        body.removeAttribute('data-half-blackscreen');
+      }
     });
   } else {
     hide_blackscreen.classList.add('invisible');
