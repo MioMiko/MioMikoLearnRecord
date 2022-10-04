@@ -1,1 +1,2 @@
-aside.innerHTML='<h1>HTML5</h1><hr><dl><dt><a href="0 - HTML introduction.html">HTML引言</a></dt><dt><a href="1 - doctype tag.html">文档类型声明标签</a></dt><dt><a href="2 - HTML tag.html">HTML标签</a></dt><dd><a href="2.1 - tag1.html">注释、主体结构与头部标签</a></dd><dd><a href="2.2 - tag2.html">语义标签</a></dd></dl>'
+const aside=body.querySelector('aside');
+aside.innerHTML='<h1>HTML5</h1><hr><dl><dt><a href="0 - HTML introduction.html">HTML引言</a></dt><dt><a href="1 - doctype tag.html">文档类型声明标签</a></dt><dt><a href="2 - HTML tag.html">HTML标签</a></dt><dd><a href="2.1 - tag1.html">注释、主体结构与头部标签</a></dd><dd><a href="2.2 - tag2.html">语义标签</a></dd><dd><a href="2.3 - tag3.html">容器标签</a></dd><dt><a href="3 - special character.html">特殊字符</a></dt></dl>'
