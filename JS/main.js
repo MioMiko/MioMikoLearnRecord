@@ -35,7 +35,7 @@ let rootURL=null;
     pink: ()=>{body.setAttribute('data-theme','pink');},
     byString: (theme)=>{
       switch(theme){
-      case undefined:
+      case null:
         localStorage.setItem('theme','followSystem');
         localStorage.setItem('defaultLightTheme','light');
         localStorage.setItem('defaultDarkTheme','dark');
