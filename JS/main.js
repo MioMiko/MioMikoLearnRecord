@@ -25,14 +25,42 @@ let rootURL=null;
 //根据本地存储数据同步主题
 {
   const systemTheme=window.matchMedia('(prefers-color-scheme: light)');
+
   //定义设置主题函数对象
   const setTheme={
+    defaultLightTheme: localStorage.getItem('defaultLightTheme'),
+    defaultDarkTheme: localStorage.getItem('defaultDarkTheme'),
     light: ()=>{body.setAttribute('data-theme','light');},
     dark: ()=>{body.setAttribute('data-theme','dark');},
     pink: ()=>{body.setAttribute('data-theme','pink');},
+    byString: (theme)=>{
+      switch(theme){
+      case undefined:
+        localStorage.setItem('theme','followSystem');
+        localStorage.setItem('defaultLightTheme','light');
+        localStorage.setItem('defaultDarkTheme','dark');
+        setTheme.followSystem();
+        break;
+      case 'followSystem':
+        setTheme.followSystem();
+        break;
+      case 'light':
+        setTheme.light();
+        break;
+      case 'dark':
+        setTheme.dark();
+        break;
+      case 'pink':
+        setTheme.pink();
+        break;
+      }
+    },
     syncSystem: ()=>{
-      if(systemTheme.matches){setTheme.light();}
-      else{setTheme.dark();}
+      if(systemTheme.matches){
+        setTheme.byString(setTheme.defaultLightTheme);
+      } else {
+        setTheme.byString(setTheme.defaultDarkTheme);
+      }
     },
     followSystem: ()=>{
       setTheme.syncSystem();
@@ -42,27 +70,7 @@ let rootURL=null;
     }
   }
   //同步主题
-  {
-    const theme=localStorage.getItem('theme');
-    switch(theme){
-    case null:
-      localStorage.setItem('theme','followSystem');
-      setTheme.followSystem();
-      break;
-    case 'followSystem':
-      setTheme.followSystem();
-      break;
-    case 'light':
-      setTheme.light();
-      break;
-    case 'dark':
-      setTheme.dark();
-      break;
-    case 'pink':
-      setTheme.pink();
-      break;
-    }
-  }
+  setTheme.byString(localStorage.getItem('theme'))
 }
 
 //以下加载完毕执行
