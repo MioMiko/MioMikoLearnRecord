@@ -1,12 +1,12 @@
-body{
+body[data-theme="light"]{
   --bg-color: #fff;
   --text-color: #000;
 }
-body.dark{
+body[data-theme="dark"]{
   --bg-color: #000;
   --text-color: #fff;
 }
-body.pink{
+body[data-theme="pink"]{
   --bg-color: #ffe8f4;
   --text-color: #f9c;
 }

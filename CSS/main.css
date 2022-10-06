@@ -34,6 +34,13 @@ a {
   text-decoration: none;
 }
 button {
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  background: var(--code-bg-color,#eee);
+  border: 2px solid var(--font-coloe,#000);
+  border-radius: 0.3rem;
   cursor:pointer;
 }
 code {
@@ -95,6 +102,15 @@ pre > code{
   display: block;
   padding: 0.8rem;
   overflow: auto;
+}
+select {
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  background: var(--code-bg-color,#eee);
+  border: 2px solid var(--font-color,#000);
+  border-radius: 0.3rem;
 }
 table {
   margin: 0.8rem 0;
@@ -175,6 +191,8 @@ nav ul#header li#filler {
 }
 nav ul#header a:last-child li {
   width: 3rem; height: 3rem;
+  background: url(images/button.webp) no-repeat;
+  background-size: 3rem;
 }
     /*折叠侧边栏*/
 nav span#collapse-aside{
@@ -233,6 +251,7 @@ article {
   margin: 0 1rem;
   padding-top:4rem;
   transition: margin-left 0.15s linear 0s;
+  overflow: hidden;
 }
 article a{
   color: var(--a-color,#42b983);
@@ -299,6 +318,27 @@ article .copyright-list li ul{
   margin-left: 0.5rem;
   list-style: none;
 }
+/*设置*/
+article#setting ul li {
+  margin: 0;
+  list-style: none;
+}
+article#setting ul :last-child {
+  margin-top: 1rem;
+}
+article#setting ul :last-child button {
+  float: right;
+  margin: 1rem 0 0 1rem;
+  padding: 0 1rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  border-radius: 0;
+}
+article#setting ul :last-child :first-child {
+  color: var(--dark-font-color,#fff);
+  background: var(--submit-bg-color,#48f);
+  border: transparent;
+}
 /*黑幕效果*/
 .blackscreen {
   background-color: var(--text-color,#000);
@@ -308,7 +348,7 @@ article .copyright-list li ul{
 .blackscreen:hover {
   color: var(--bg-color,#fff);
 }
-.half-blackscreen .blackscreen{
+body[data-half-blackscreen] .blackscreen{
   color: black;
   background-color: var(--light-text-color,#ddd);
 }
