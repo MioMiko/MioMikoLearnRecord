@@ -1,6 +1,6 @@
 const body=document.querySelector('body');
 
-//生成链接路径
+//生成根目录路径
 let rootURL=null;
 {
   let rootURLArr=[];
@@ -24,8 +24,8 @@ let rootURL=null;
 
 //根据本地存储数据同步主题
 {
+  //获取系统主题
   const systemTheme=window.matchMedia('(prefers-color-scheme: light)');
-
   //定义设置主题函数对象
   const setTheme={
     defaultLightTheme: localStorage.getItem('defaultLightTheme'),
@@ -33,51 +33,52 @@ let rootURL=null;
     light: ()=>{body.setAttribute('data-theme','light');},
     dark: ()=>{body.setAttribute('data-theme','dark');},
     pink: ()=>{body.setAttribute('data-theme','pink');},
-    byString: (theme)=>{
+    byString: function(theme){
       switch(theme){
       case null:
         localStorage.setItem('theme','followSystem');
         localStorage.setItem('defaultLightTheme','light');
         localStorage.setItem('defaultDarkTheme','dark');
-        setTheme.followSystem();
+        this.defaultLightTheme='light';
+        this.defaultDarkTheme='dark';
+        this.followSystem();
         break;
       case 'followSystem':
-        setTheme.followSystem();
+        this.followSystem();
         break;
       case 'light':
-        setTheme.light();
+        this.light();
         break;
       case 'dark':
-        setTheme.dark();
+        this.dark();
         break;
       case 'pink':
-        setTheme.pink();
+        this.pink();
         break;
       }
     },
-    syncSystem: ()=>{
+    syncSystem: function(){
       if(systemTheme.matches){
-        setTheme.byString(setTheme.defaultLightTheme);
+        this.byString(this.defaultLightTheme);
       } else {
-        setTheme.byString(setTheme.defaultDarkTheme);
+        this.byString(this.defaultDarkTheme);
       }
     },
-    followSystem: ()=>{
-      setTheme.syncSystem();
+    followSystem: function(){
+      this.syncSystem();
       systemTheme.addEventListener('change',()=>{
-        setTheme.syncSystem();
+        this.syncSystem();
       });
     }
   }
   //同步主题
-  setTheme.byString(localStorage.getItem('theme'))
+  setTheme.byString(localStorage.getItem('theme'));
 }
 
 //以下加载完毕执行
-
-//生成导航栏
 document.addEventListener('DOMContentLoaded',()=>{
-//  const body=document.querySelector('body');
+
+  //生成导航栏
   const nav=body.querySelector('nav');
   const aside=body.querySelector('aside');
   const article=body.querySelector('article');
@@ -99,8 +100,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const isNarrowScreen=window.matchMedia('(max-width: 1000px)');
 
+  //获取导航栏头部的分区存在数组内
   const navSections=[nav.querySelector('#homepage'),nav.querySelector('#doc'),nav.querySelector('#examples'),nav.querySelector('#copyright'),nav.querySelector('#header :last-child li')];
 
+  //搜索到黑幕，则is_blackscreen_exist为真，否则为undefined为假
   const is_blackscreen_exist=article.querySelector('.blackscreen');
   const hide_blackscreen=nav.querySelector('#hide-blackscreen');
 
@@ -112,14 +115,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   //其他功能
 
-  //导航栏显示功能
-  //section: 0-homepage 1-doc 2-examples 3-copyright
+  //根据html内嵌的JavaScript定义的分区来高亮显示目前分区
+  //section: 0-homepage 1-doc 2-examples 3-copyright 4-setting
   if(section!==null){
     navSections[section].classList.add('current');
   }
-  //折叠侧边栏功能
+  //折叠侧边栏功能，若存在侧边栏，则执行侧边栏折叠相关操作，否则隐藏折叠侧边栏按钮
   if(aside){
-    if(!(isNarrowScreen.matches)){
+    if(!(isNarrowScreen.matches)){//如果不是窄屏幕，则默认打开侧边栏
       aside.classList.add('expanded');
       article.classList.add('collapsed');
     }
@@ -131,16 +134,17 @@ document.addEventListener('DOMContentLoaded',()=>{
     collapseAside.classList.add('hide');
   }
   
-  //隐藏黑幕功能
-  if(is_blackscreen_exist){
+  //隐藏黑幕功能，若当前页面无黑幕，隐藏隐藏黑幕按钮
+  if(is_blackscreen_exist){//如果当前页面黑幕存在
     hide_blackscreen.addEventListener('click',()=>{
-      if(!('halfBlackscreen' in body.dataset)){
-        body.dataset.halfBlackscreen='';
+      //若body的自定义属性data-half-blackscreen存在，则移除，否则添加
+      if('halfBlackscreen' in body.dataset){
+        body.removeAttribute('data-half-blackscreen');//移除属性
       } else {
-        body.removeAttribute('data-half-blackscreen');
+        body.dataset.halfBlackscreen='';//添加属性，此属性只要存在即为真，无论值为多少
       }
     });
   } else {
-    hide_blackscreen.classList.add('invisible');
+    hide_blackscreen.classList.add('invisible');//隐藏隐藏黑幕按钮
   }
 })
