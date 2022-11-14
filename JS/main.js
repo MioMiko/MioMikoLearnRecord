@@ -1,25 +1,12 @@
 const body=document.querySelector('body');
 
-//生成根目录路径
-let rootURL=null;
-{
-  let rootURLArr=[];
-  for(let i=0;i<rootDistance;i++){
-    rootURLArr.push('../');
-  }
-  rootURL=rootURLArr.join('');
-}
-
 //生成CSS文件链接
 {
-  const css=document.querySelector('#link');
-  let cssInner=[];
-  cssInner.push('<link rel="stylesheet" type="text/css" href="');
-  cssInner.push(rootURL);
-  cssInner.push('CSS/main.css"><link rel="stylesheet" type="text/css" href="');
-  cssInner.push(rootURL);
-  cssInner.push('CSS/theme.css">');
-  css.innerHTML=cssInner.join('');
+	const css=document.querySelector('#link');
+	css.innerHTML='\
+		<link rel="stylesheet" type="text/css" href="CSS/main.css">\
+		<link rel="stylesheet" type="text/css" href="CSS/theme.css">\
+	';
 }
 
 //根据本地存储数据同步主题
@@ -33,35 +20,19 @@ let rootURL=null;
     light: ()=>{body.setAttribute('data-theme','light');},
     dark: ()=>{body.setAttribute('data-theme','dark');},
     pink: ()=>{body.setAttribute('data-theme','pink');},
-    byString: function(theme){
-      switch(theme){
-      case null:
+    null: function(){
         localStorage.setItem('theme','followSystem');
         localStorage.setItem('defaultLightTheme','light');
         localStorage.setItem('defaultDarkTheme','dark');
         this.defaultLightTheme='light';
         this.defaultDarkTheme='dark';
         this.followSystem();
-        break;
-      case 'followSystem':
-        this.followSystem();
-        break;
-      case 'light':
-        this.light();
-        break;
-      case 'dark':
-        this.dark();
-        break;
-      case 'pink':
-        this.pink();
-        break;
-      }
     },
     syncSystem: function(){
       if(systemTheme.matches){
-        this.byString(this.defaultLightTheme);
+        this[this.defaultLightTheme]();
       } else {
-        this.byString(this.defaultDarkTheme);
+        this[this.defaultDarkTheme]();
       }
     },
     followSystem: function(){
@@ -72,7 +43,7 @@ let rootURL=null;
     }
   }
   //同步主题
-  setTheme.byString(localStorage.getItem('theme'));
+  setTheme[localStorage.getItem('defaultLightTheme')]();
 }
 
 //以下加载完毕执行
@@ -82,26 +53,43 @@ document.addEventListener('DOMContentLoaded',()=>{
   const nav=body.querySelector('nav');
   const aside=body.querySelector('aside');
   const article=body.querySelector('article');
-  {
-    let navInner=[]
-    navInner.push('<ul id="header"><a href="');
-    navInner.push(rootURL);
-    navInner.push('index.html"><li id="homepage">首页</li></a><a href="');
-    navInner.push(rootURL);
-    navInner.push('doc/doc_index.html"><li id="doc">文档</li></a><a href="');
-    navInner.push(rootURL);
-    navInner.push('examples/examples_index.html"><li id="examples">实例</li></a><a href="');
-    navInner.push(rootURL);
-    navInner.push('copyright.html"><li id="copyright">版权声明</li></a><li id="filler"></li><a href="');
-    navInner.push(rootURL);
-    navInner.push('setting.html"><li><div>设置</div></li></a></ul><ul id="tools"><a href="#top"><li>返回顶部</li></a><li id="hide-blackscreen">隐藏黑幕</li></ul><span id="collapse-aside">≡</span>');
-    nav.innerHTML=navInner.join('');
-  }
+
+	nav.innerHTML='\
+		<ul id="header">\
+			<a href="/index.html">\
+				<li id="homepage">首页</li>\
+			</a>\
+			<a href="/doc/doc_index.html">\
+				<li id="doc">文档</li>\
+			</a>\
+			<a href="/examples/examples_index.html">\
+				<li id="examples">实例</li>\
+			</a>\
+			<a href="/copyright.html">\
+				<li id="copyright">版权声明</li>\
+			</a>\
+			<li id="filler"></li>\
+			<a href="/setting.html">\
+				<li><div>设置</div></li>\
+			</a>\
+		</ul>\
+		<ul id="tools">\
+			<a href="#top"><li>返回顶部</li></a>\
+			<li id="hide-blackscreen">隐藏黑幕</li>\
+		</ul>\
+		<span id="collapse-aside">≡</span>\
+	';
 
   const isNarrowScreen=window.matchMedia('(max-width: 1000px)');
 
   //获取导航栏头部的分区存在数组内
-  const navSections=[nav.querySelector('#homepage'),nav.querySelector('#doc'),nav.querySelector('#examples'),nav.querySelector('#copyright'),nav.querySelector('#header :last-child li')];
+	const navSections=[
+		nav.querySelector('#homepage'),
+		nav.querySelector('#doc'),
+		nav.querySelector('#examples'),
+		nav.querySelector('#copyright'),
+		nav.querySelector('#header :last-child li'),
+	];
 
   //搜索到黑幕，则is_blackscreen_exist为真，否则为undefined为假
   const is_blackscreen_exist=article.querySelector('.blackscreen');
