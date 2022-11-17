@@ -1,118 +1,119 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta http-equiv="x-dns-prefetch-control" content="on">
-        <meta http-equiv="Cache-control" content="no-siteapp">
-        <meta name="renderer" content="webkit">
-        <meta name="author" content="美桜御子">
-        <div id="link"></div>
-        <title></title>
-        <script>
-            const section=1;
-            const rootDistance=2;
-        </script>
-    </head>
-    <body>
-        <script src="../../JS/main.js"></script>
-        <nav></nav>
-        <aside></aside>
-        <article>
-            <h1>语义标签</h1>
-            <hr>
-            <h2>标题标签</h2>
-            <p>
-                标题标签，用于添加标题，HTML中一共有六个标题标签，<code>&lt;h1&gt;-&lt;h6&gt;</code>，根据重要性依次递减，这些标签都有默认加粗的效果。
-                <pre><code><h4>源码</h4>&lt;h1&gt;一级标题&lt;/h1&gt;<br>&lt;h2&gt;二级标题&lt;/h2&gt;<br>......<br>&lt;h6&gt;六级标题&lt;/h6&gt;<h4>效果</h4><h1>一级标题</h1><br><h2>二级标题</h2><br>......<h6>六级标题</h6></code></pre>
-            </p>
-            <h2>换行标签</h2>
-            <p>
-                与普通文本格式不同，HTML文本的换行并不会显示在页面中。</p>
-                <pre><code><h4>源码</h4>文字a<br>文字b<h4>效果</h4>文字a文字b</code></pre>
-                这时就需要换行标签来进行换行
-                <pre><code><h4>源码</h4>文字a&lt;br&gt;<br>文字b<h4>效果</h4>文字a<br>文字b</code></pre>
-            </p>
-            <h2>段落标签</h2>
-            <p>
-                段落标签可以让段落与段落之间换行，且加入一定间距，使文章结构更清晰。
-                <pre><code><h4>源码</h4>&lt;p&gt;段落a&lt;/p&gt;<br>&lt;p&gt;段落b&lt;/p&gt;<h4>效果</h4><p>段落a</p><p>段落b</p></code></pre>
-            </p>
-            <h2>文本格式化标签</h2>
-            <p>
-                文本格式化标签可以为文本加入加粗斜体等样式，加强网页展示效果。
-                <table>
-                    <thead>
-                        <tr><th style="width:4.5rem;">效果</th><th>标签</th><th>说明</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong>加粗</strong></td><td>&lt;strong&gt;&lt;/strong&gt;或&lt;b&gt;&lt;/b&gt;</td><td rowspan="4">这些标签虽然效果一样，但strong，em，del，ins语气更强烈，一般用于提醒或重点标注，具备特殊含义，而b，i，s，u只代表样式无特殊含义</td></tr>
-                        <tr><td><em>斜体</em></td><td>&lt;em&gt;&lt;/em&gt;或&lt;i&gt;&lt;/i&gt;</td></tr>
-                        <tr><td><del>删除线</del></td><td>&lt;del&gt;&lt;/del&gt;或&lt;s&gt;&lt;/s&gt;</td></tr>
-                        <tr><td><ins>下划线</ins></td><td>&lt;ins&gt;&lt;/ins&gt;或&lt;u&gt;&lt;/u&gt;</td></tr>
-                        <tr><td><mark>高亮</mark></td><td>&lt;mark&gt;&lt;/mark&gt;</td><td>高亮显示文本</td></tr>
-                        <tr><td><code>代码块</code></td><td>&lt;code&gt;&lt;/code&gt;</td><td>以等宽字体显示</td></tr>
-                        <tr><td>上标<sup>2</sup></td><td>&lt;sup&gt;&lt;/sup&gt;</td><td>上标，用于表示幂等</td></tr>
-                        <tr><td>下标<sub>2</sub></td><td>&lt;sub&gt;&lt;/sub&gt;</td><td>下标，用于表示化学式等</td></tr>
-                        <tr><td><bdo dir="rtl">倒序</bdo></td><td>&lt;bdo dir="属性"&gt;&lt;/bdo&gt;</td><td>规定文字显示顺序，dir属性ltr即从左到右，rtl即从右到左<span class="blackscreen">基本没卵用</span></td></tr>
-                    </tbody>
-                </table>
-            </p>
-            <h2>链接标签</h2>
-            <h3>路径</h3>
-            <p>
-                在了解链接标签前，需先了解路径有关内容。
-            </p>
-            <h4>相对路径</h4>
-            <p>
-                相对路径是相对当前文件的路径。<br>
-                对于以下文件结构：
-                <ul>
-                    <li>
-                        HTML
-                        <ul>
-                            <li>index.html</li>
-                            <li>index2.html</li>
-                            <li>
-                                en_US
-                                <ul>
-                                    <li>index_en_US</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        images
-                        <ul>
-                            <li>pic1.webp</li>
-                        </ul>
-                    </li>
-                    <li>404.html</li>
-                </ul>
-                此时以HTML/index为起点，index2.html文件的路径为<code>index2.html</code>,<br>
-                <code>/</code>表示下一级路径，例如<code>index/en_US/index_en_US.html</code><br>
-                <code>../</code>表示上一级路径，例如<code>../404.html</code>或<code>../images/pic1.webp</code>
-            </p>
-            <h4>绝对路径</h4>
-            <p>
-                绝对路径一般是指从电脑盘符开始或者某一网址的路径，例如：
-                <code>D:\web\images\pic1.webp</code>或
-                <pre><code>http://www.mywebsite.com/images/pic1.webp</code></pre>
-                由于电脑盘符路径取决于文件在电脑中的位置，当整个网站根文件夹的位置改变，就完全无法使用，所以一般不会使用。
-            </p>
-            <h3>链接标签</h3>
-            <p>
-                链接标签用于定义超链接，从一个页面跳转到另一个页面。
-                <pre><code>&lt;a href="目标地址，可以是相对路径" target="标签页打开方式"&gt;&lt;/a&gt;</code></pre>
-                <h4>属性</h4>
-                <ul>
-                    target
-                    <li>_self：在当前标签页打开。</li>
-                    <li>_blank：在新标签页打开。</li>
-                </ul>
-            </p>
-        </article>
-        <script src="../../JS/aside/doc/HTML.js"></script>
-    </body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="x-dns-prefetch-control" content="on">
+		<meta http-equiv="Cache-control" content="no-siteapp">
+		<meta name="renderer" content="webkit">
+		<meta name="author" content="美桜御子">
+		<div id="link"></div>
+		<title></title>
+		<script>
+			const section=1;
+		</script>
+	</head>
+	<body>
+		<script src="/JS/main.js"></script>
+		<nav></nav>
+		<aside></aside>
+		<article>
+			<h1>语义标签</h1>
+			<hr>
+			<h2>标题标签</h2>
+			<p>
+				标题标签，用于添加标题，HTML中一共有六个标题标签，<code>&lt;h1&gt;-&lt;h6&gt;</code>，根据重要性依次递减，这些标签都有默认加粗的效果。
+				<pre><code><h4>源码</h4>&lt;h1&gt;一级标题&lt;/h1&gt;<br>&lt;h2&gt;二级标题&lt;/h2&gt;<br>......<br>&lt;h6&gt;六级标题&lt;/h6&gt;<h4>效果</h4><h1 class="original-margin">一级标题</h1><h2 class="original-margin">二级标题</h2>......<h6 class="original-margin">六级标题</h6></code></pre>
+			</p>
+			<h2>换行标签</h2>
+			<p>
+				与普通文本格式不同，HTML文本的换行并不会显示在页面中。</p>
+				<pre><code><h4>源码</h4>文字a<br>文字b<h4>效果</h4>文字a文字b</code></pre>
+				这时就需要换行标签来进行换行
+				<pre><code><h4>源码</h4>文字a&lt;br&gt;<br>文字b<h4>效果</h4>文字a<br>文字b</code></pre>
+			</p>
+			<h2>段落标签</h2>
+			<p>
+				段落标签可以让段落与段落之间换行，且加入一定间距，使文章结构更清晰。
+				<pre><code><h4>源码</h4>&lt;p&gt;段落a&lt;/p&gt;<br>&lt;p&gt;段落b&lt;/p&gt;<h4>效果</h4><p>段落a</p><p>段落b</p></code></pre>
+			</p>
+			<h2>文本格式化标签</h2>
+			<p>
+				文本格式化标签可以为文本加入加粗斜体等样式，加强网页展示效果。
+				<table>
+					<thead>
+						<tr><th style="width:4.5rem;">效果</th><th>标签</th><th>说明</th></tr>
+					</thead>
+					<tbody>
+						<tr><td><strong>加粗</strong></td><td>&lt;strong&gt;&lt;/strong&gt;或&lt;b&gt;&lt;/b&gt;</td><td rowspan="4">这些标签虽然效果一样，但strong，em，del，ins语气更强烈，一般用于提醒或重点标注，具备特殊含义，而b，i，s，u只代表样式无特殊含义</td></tr>
+						<tr><td><em>斜体</em></td><td>&lt;em&gt;&lt;/em&gt;或&lt;i&gt;&lt;/i&gt;</td></tr>
+						<tr><td><del>删除线</del></td><td>&lt;del&gt;&lt;/del&gt;或&lt;s&gt;&lt;/s&gt;</td></tr>
+						<tr><td><ins>下划线</ins></td><td>&lt;ins&gt;&lt;/ins&gt;或&lt;u&gt;&lt;/u&gt;</td></tr>
+						<tr><td><mark>高亮</mark></td><td>&lt;mark&gt;&lt;/mark&gt;</td><td>高亮显示文本</td></tr>
+						<tr><td><code>代码块</code></td><td>&lt;code&gt;&lt;/code&gt;</td><td>以等宽字体显示</td></tr>
+						<tr><td>上标<sup>2</sup></td><td>&lt;sup&gt;&lt;/sup&gt;</td><td>上标，用于表示幂等</td></tr>
+						<tr><td>下标<sub>2</sub></td><td>&lt;sub&gt;&lt;/sub&gt;</td><td>下标，用于表示化学式等</td></tr>
+						<tr><td><bdo dir="rtl">倒序</bdo></td><td>&lt;bdo dir="属性"&gt;&lt;/bdo&gt;</td><td>规定文字显示顺序，dir属性ltr即从左到右，rtl即从右到左<span class="blackscreen">基本没卵用</span></td></tr>
+					</tbody>
+				</table>
+			</p>
+			<h2>链接标签</h2>
+			<h3>路径</h3>
+			<p>
+				在了解链接标签前，需先了解路径有关内容。
+			</p>
+			<h4>相对路径</h4>
+			<p>
+				相对路径是相对当前文件的路径。<br>
+				对于以下文件结构：
+				<ul>
+					<li>
+						HTML
+						<ul>
+							<li>index.html</li>
+							<li>index2.html</li>
+							<li>
+								en_US
+								<ul>
+									<li>index_en_US</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						images
+						<ul>
+							<li>pic1.webp</li>
+						</ul>
+					</li>
+					<li>404.html</li>
+				</ul>
+				此时以HTML/index为起点，index2.html文件的路径为<code>index2.html</code>,<br>
+				<code>/</code>表示下一级路径，例如<code>index/en_US/index_en_US.html</code><br>
+				<code>../</code>表示上一级路径，例如<code>../404.html</code>或<code>../images/pic1.webp</code>
+			</p>
+			<h4>绝对路径</h4>
+			<p>
+				绝对路径指从某一根目录（如电脑盘符）开始或者某一网址的路径，例如：
+				<code>D:\web\images\pic1.webp</code>或
+				<pre><code>http://www.mywebsite.com/images/pic1.webp</code></pre>
+				由于电脑盘符路径取决于文件在电脑中的位置，当整个网站根文件夹的位置改变，或者运行在其他服务器上时，就完全无法运作，所以一般不会使用。<br>
+				特别的，当网站运行在服务器上时，需选取一个文件夹作为网站的根目录，用户只能访问其中的文件，此时可以用如下方式表示网站的根目录:
+				<pre><code>/images/pic1.webp</code></pre>
+			</p>
+			<h3>链接标签</h3>
+			<p>
+				链接标签用于定义超链接，从一个页面跳转到另一个页面。
+				<pre><code>&lt;a href="目标地址，可以是相对路径" target="标签页打开方式"&gt;&lt;/a&gt;</code></pre>
+				<h4>属性</h4>
+				<ul>
+					target
+					<li>_self：在当前标签页打开。</li>
+					<li>_blank：在新标签页打开。</li>
+				</ul>
+			</p>
+		</article>
+		<script src="/JS/aside/doc/HTML.js"></script>
+	</body>
 </html>

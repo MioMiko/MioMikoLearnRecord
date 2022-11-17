@@ -4,8 +4,8 @@ const body=document.querySelector('body');
 {
 	const css=document.querySelector('#link');
 	css.innerHTML='\
-		<link rel="stylesheet" type="text/css" href="CSS/main.css">\
-		<link rel="stylesheet" type="text/css" href="CSS/theme.css">\
+		<link rel="stylesheet" type="text/css" href="/CSS/main.css">\
+		<link rel="stylesheet" type="text/css" href="/CSS/theme.css">\
 	';
 }
 
@@ -73,11 +73,13 @@ document.addEventListener('DOMContentLoaded',()=>{
 				<li><div>设置</div></li>\
 			</a>\
 		</ul>\
+		<ul id="directory" class="collapsed">\
+		</ul>\
 		<ul id="tools">\
 			<a href="#top"><li>返回顶部</li></a>\
-			<li id="hide-blackscreen">隐藏黑幕</li>\
+			<li id="hide-blackscreen" class="cursor-pointer">隐藏黑幕</li>\
 		</ul>\
-		<span id="collapse-aside">≡</span>\
+		<span id="collapse-aside" class="cursor-pointer">≡</span>\
 	';
 
   const isNarrowScreen=window.matchMedia('(max-width: 1000px)');
@@ -135,4 +137,24 @@ document.addEventListener('DOMContentLoaded',()=>{
   } else {
     hide_blackscreen.classList.add('invisible');//隐藏隐藏黑幕按钮
   }
+
+	//生成目录功能
+	directory=nav.querySelector('#directory');
+
+	{
+		let directoryInner=[];
+		let index=0;
+		//检索正文内容所有子标签
+		for(let item of article.children){
+			//当标签名是标题标签
+			if(true===/^H[1-6]$/.test(item.tagName)){
+				//给标题标签添加索引并在目录中添加相应锚点链接
+				item.id=index;
+				directoryInner.push(`<a href="#${index}"><div class="${item.tagName}">${item.innerHTML}</div></a>`);
+				index++;
+			}
+		}
+		directory.innerHTML=directoryInner.join('');
+	}
+
 })
