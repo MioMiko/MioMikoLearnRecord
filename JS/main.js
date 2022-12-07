@@ -1,14 +1,5 @@
 const body=document.querySelector('body');
 
-//生成CSS文件链接
-{
-	const css=document.querySelector('#link');
-	css.innerHTML='\
-		<link rel="stylesheet" type="text/css" href="/CSS/main.css">\
-		<link rel="stylesheet" type="text/css" href="/CSS/theme.css">\
-	';
-}
-
 //根据本地存储数据同步主题
 {
   //获取系统主题
