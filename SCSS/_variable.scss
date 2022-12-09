@@ -1,0 +1,26 @@
+$VARIABLE: true !default;
+@if $VARIABLE {
+	$VARIABLE: false;
+}
+
+$aside-width: 20rem;
+
+$article-margin-horizontal: 1rem;
+
+@mixin font(
+	$color: inherit,
+	$a-color: inherit,
+	$a-hover-color: $a-color,
+	$a-decoration: none,
+	$a-hover-decoration: underline)
+{
+	color: $color;
+	a {
+		color: $a-color;
+		text-decoration: $a-decoration;
+		&:hover {
+			color: $a-hover-color;
+			text-decoration: $a-hover-decoration;
+		}
+	}
+}

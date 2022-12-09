@@ -1,0 +1,39 @@
+$light-theme: (
+	text-color: #000,
+	bg-color: #fff,
+);
+
+$dark-theme: (
+	text-color: #fff,
+	bg-color: #000, 
+);
+
+$pink-theme: (
+	text-color: #f9c,
+	bg-color: #ffe8f4,
+);
+
+$var: (
+	text-color: var(--text-color,map-get($light-theme,text-color)),
+	bg-color: var(--text-color,map-get($light-theme,bg-color)),
+);
+
+//防止重复包含
+$THEME: true !default;
+@if $THEME{
+$THEME: false;
+	body {
+		&[data-theme="light"] {
+			--text-color: map-get($light-theme,text-color);
+			--bg-color: map-get($light-theme,bg-color);
+		}
+		&[data-theme="dark"] {
+			--text-color: map-get($dark-theme,text-color);
+			--bg-color: map-get($light-theme,bg-color);
+		}
+		&[data-theme="pink"] {
+			--text-color: map-get($pink-theme,text-color);
+			--bg-color: map-get($pink-theme,bg-color);
+		}
+	}
+}

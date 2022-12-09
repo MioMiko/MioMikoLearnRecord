@@ -1,0 +1,101 @@
+/* 导航栏 */
+nav {
+	z-index: 50;
+	color: var(--nav-color,#fff);
+	a{
+		color: var(--nav-color,#fff);
+	}
+	/* 导航栏顶部 */
+	ul#header {
+		position: fixed;
+		display: flex;
+		width: 100%; height: 3rem;
+		line-height: 3rem;
+		background: var(--nav-bg-color,#333);
+		a:hover{
+			color: var(--nav-ahover-color,#e96900);
+		}
+		li {
+			margin: 0;
+			width: 5.5rem; height: 3rem;
+			text-align: center;
+			list-style: none;
+			&.current {
+				color: var(--nav-a-color,#e96900);
+				border-bottom: 3px solid var(--nav-ahover-color,#e96900);
+			}
+			&#filler {
+				flex: 1;
+			}
+		}
+		a:last-child li {
+			width: 3rem; height: 3rem;
+		}
+	}
+	/* 折叠侧边栏 */
+	span#collapse-aside{
+		position: fixed;
+		right: 0; bottom: 0;
+		font-size: 2rem;
+		color: var(--a-color,#42b983);
+	}
+	/* 目录 */
+	ul#directory {
+		position: fixed;
+		right: 0; bottom: 50vh;
+		width: 20rem; height:40vh;
+		transform: translateX(18rem);
+		overflow: auto;
+		padding-left: 2px;
+		background: var(--half-transparent,rgba(255,255,255,0.5));
+		border-left: 2px solid var(--a-color,#42b983);
+		* {
+			display: none;
+		}
+		&:hover {
+			transform: translateX(0);
+			* {
+				display: block;
+			}
+		}
+		a{
+			color: var(--font-color,#000);
+			&:hover{
+				color: var(--a-color,#42b983);
+				text-decoration: underline;
+			}
+		}
+		.H1 {
+			font-size: 1.4rem;
+		}
+		.H2 {
+			padding-left: 1rem;
+		}
+		.H3 {
+			padding-left: 2rem;
+		}
+		.H4 {
+			padding-left: 3rem;
+		}
+		.H5 {
+			padding-left: 4rem;
+		}
+		.H6 {
+			padding-left: 5rem;
+		}
+	}
+	/* 工具栏 */
+	ul#tools {
+		position: fixed;
+		right: 0; bottom: 20vh;
+		line-height: 1.1rem;
+		li{
+			margin-top: 0.5rem;
+			width: 1.2rem; height: 4.5rem;
+			overflow: hidden;
+			text-align:center;
+			list-style: none;
+			background: var(--tools-bg-color,rgba(0, 0, 0, 0.6));
+		}
+	}
+}
