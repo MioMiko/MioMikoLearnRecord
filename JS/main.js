@@ -31,9 +31,9 @@ isNarrowScreen.addEventListener('change',ChangeStylebyScreenWidth);
 //根据本地存储数据同步主题
 {
 	//获取系统主题
-	const systemTheme=window.matchMedia('(prefers-color-scheme: light)');
+	const systemTheme = window.matchMedia('(prefers-color-scheme: light)');
 	//定义设置主题函数对象
-	const setTheme={
+	const setTheme = {
 		defaultLightTheme: localStorage.getItem('defaultLightTheme'),
 		defaultDarkTheme: localStorage.getItem('defaultDarkTheme'),
 		light: ()=>{body.setAttribute('data-theme','light');},
@@ -62,7 +62,7 @@ isNarrowScreen.addEventListener('change',ChangeStylebyScreenWidth);
 		}
 	}
 	//同步主题
-	setTheme[localStorage.getItem('defaultLightTheme')]();
+	setTheme[localStorage.getItem('theme')]();
 }
 
 //隐藏黑幕功能，若当前页面无黑幕，隐藏隐藏黑幕按钮

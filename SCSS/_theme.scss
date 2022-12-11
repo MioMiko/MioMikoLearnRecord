@@ -15,12 +15,12 @@ $pink-theme: (
 
 $var: (
 	text-color: var(--text-color,map-get($light-theme,text-color)),
-	bg-color: var(--text-color,map-get($light-theme,bg-color)),
+	bg-color: var(--bg-color,map-get($light-theme,bg-color)),
 );
 
 //防止重复包含
 $THEME: true !default;
-@if $THEME{
+@if $THEME {
 $THEME: false;
 	body {
 		&[data-theme="light"] {
@@ -29,7 +29,7 @@ $THEME: false;
 		}
 		&[data-theme="dark"] {
 			--text-color: map-get($dark-theme,text-color);
-			--bg-color: map-get($light-theme,bg-color);
+			--bg-color: map-get($dark-theme,bg-color);
 		}
 		&[data-theme="pink"] {
 			--text-color: map-get($pink-theme,text-color);
