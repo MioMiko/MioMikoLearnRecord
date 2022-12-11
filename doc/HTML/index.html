@@ -9,52 +9,29 @@
 		<meta name="renderer" content="webkit">
 		<meta name="author" content="美桜御子">
 		<style id="link">@import "/MioMikoLearnRecord/CSS/main.css";</style>
-		<title>设置</title>
+		<title>HTML文档</title>
 		<script>
-			const section=4;
-			const rootDistance=0;
+			const section = 1;
+			const defaultPath = '0 - HTML introduction.html'
 		</script>
 	</head>
 	<body>
-		<script src="JS/main.js"></script>
+		<script src="/MioMikoLearnRecord/JS/main.js"></script>
 		<nav><ul id="header"><a href="/MioMikoLearnRecord/index.html"><li id="homepage">首页</li></a><a href="/MioMikoLearnRecord/doc/doc_index.html"><li id="doc">文档</li></a><a href="/MioMikoLearnRecord/examples/examples_index.html"><li id="examples">实例</li></a><a href="/MioMikoLearnRecord/copyright.html"><li id="copyright">版权声明</li></a><li id="filler"></li><a href="/MioMikoLearnRecord/setting.html"><li><div>设置</div></li></a></ul><ul id="directory" class="collapsed"></ul><ul id="tools"><a href="#top"><li>返回顶部</li></a><li id="hide-blackscreen" class="cursor-pointer">隐藏黑幕</li></ul><span id="collapse-aside" class="cursor-pointer">≡</span></nav>
-		<article id="setting">
-			<h1>设置</h1>
+		<aside>
+			<h1>HTML5</h1>
 			<hr>
-			<p>
-				<ul>
-					<li>
-						主题颜色：
-						<select id="theme">
-							<option id="followSystem">跟随系统</option>
-							<option id="light">亮色主题</option>
-							<option id="dark">深色主题</option>
-							<option id="pink">粉色主题</option>
-						</select>
-					</li>
-					<li id="defaultLightThemeOption">
-						跟随系统默认亮色主题：
-						<select id="defaultLightTheme">
-							<option id="light">亮色主题</option>
-							<option id="dark">深色主题</option>
-							<option id="pink">粉色主题</option>
-						</select>
-					</li>
-					<li id="defaultDarkThemeOption">
-						跟随系统默认深色主题：
-						<select id="defaultDarkTheme">
-							<option id="light">亮色主题</option>
-							<option id="dark">深色主题</option>
-							<option id="pink">粉色主题</option>
-						</select>
-					</li>
-					<li class="clearfix">
-						<button id="submit">确认</button>
-						<button id="cancel">取消</button>
-					</li>
-				</ul>
-			</p>
-		</article>
-		<script src="/MioMikoLearnRecord/JS/setting.js"></script>
+			<dl>
+				<dt><a href="#0 - HTML introduction.html">HTML引言</a></dt>
+				<dt><a href="#1 - doctype tag.html">文档类型声明标签</a></dt>
+				<dt><a href="#2 - HTML tag.html">HTML标签</a></dt>
+					<dd><a href="#2.1 - tag1.html">注释、主体结构与头部标签</a></dd>
+					<dd><a href="#2.2 - tag2.html">语义标签</a></dd>
+					<dd><a href="#2.3 - tag3.html">容器标签</a></dd>
+				<dt><a href="#3 - special character.html">特殊字符</a></dt>
+			</dl>
+		</aside>
+		<article></article>
+		<script src="/MioMikoLearnRecord/JS/ajax.js"></script>
 	</body>
 </html>

@@ -1,16 +1,19 @@
 @import 'variable';
 /* 内容 */
 article {
-	margin: 0 $article-margin-horizontal;
-	padding-top:4rem;
-	overflow: hidden;
+	padding: 0 $article-padding-horizontal;
+	padding-top: 1rem;
+	margin-top: $nav-header-height;
+	height: calc(100vh - $nav-header-height);
+	overflow: auto;
 	@include font(
+		$a-color: var(--a-color,#42b983),
 		$a-hover-color: var(--a-color,#42b983),
 	);
 	body[data-narrow-screen="false"] &[data-aside] {
-		margin-left: $aside-width + $article-margin-horizontal;
+		padding-left: $aside-width + $article-padding-horizontal;
 		&.default-if-collapse {
-			margin-left: $article-margin-horizontal;
+			padding-left: $article-padding-horizontal;
 		}
 	}
 	/* 语言列表 */
@@ -53,6 +56,7 @@ article {
 			float: left;
 			margin: 0.5rem 1rem 0.5rem 0;
 			width: 100%; height: 5rem;
+			line-height: 1.5rem;
 			overflow: hidden;
 			border: 2px solid var(--border-color,#eee);
 			border-radius: 0.4rem;

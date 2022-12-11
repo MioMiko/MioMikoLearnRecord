@@ -1,5 +1,7 @@
 /* 导航栏 */
 nav {
+	$collapse-aside-size: 2rem;
+	$tools-line-height: 1.2rem;
 	z-index: 50;
 	color: var(--nav-color,#fff);
 	a{
@@ -8,11 +10,12 @@ nav {
 	/* 导航栏顶部 */
 	ul#header {
 		position: fixed;
+		top: 0;
 		display: flex;
-		width: 100%; height: 3rem;
+		width: 100%; height: $nav-header-height;
 		line-height: 3rem;
 		background: var(--nav-bg-color,#333);
-		a:hover{
+		a:hover {
 			color: var(--nav-ahover-color,#e96900);
 		}
 		li {
@@ -36,14 +39,15 @@ nav {
 	span#collapse-aside{
 		position: fixed;
 		right: 0; bottom: 0;
-		font-size: 2rem;
+		font-size: $collapse-aside-size;
 		color: var(--a-color,#42b983);
 	}
 	/* 目录 */
 	ul#directory {
 		position: fixed;
-		right: 0; bottom: 50vh;
-		width: 20rem; height:40vh;
+		right: 0; top: calc(3rem + 5vh);
+		width: 20rem;
+		height: calc(80vh - ($collapse-aside-size + $tools-line-height * 8 + 3.9rem));
 		transform: translateX(18rem);
 		overflow: auto;
 		padding-left: 2px;
@@ -87,13 +91,13 @@ nav {
 	/* 工具栏 */
 	ul#tools {
 		position: fixed;
-		right: 0; bottom: 20vh;
-		line-height: 1.1rem;
-		li{
+		right: 0; bottom: calc($collapse-aside-size + 10vh);
+		line-height: $tools-line-height;
+		li {
 			margin-top: 0.5rem;
-			width: 1.2rem; height: 4.5rem;
+			width: $tools-line-height + 0.1; height: $tools-line-height * 4 + 0.2;
 			overflow: hidden;
-			text-align:center;
+			text-align: center;
 			list-style: none;
 			background: var(--tools-bg-color,rgba(0, 0, 0, 0.6));
 		}

@@ -3,9 +3,11 @@ $VARIABLE: true !default;
 	$VARIABLE: false;
 }
 
+$nav-header-height: 3rem;
+
 $aside-width: 20rem;
 
-$article-margin-horizontal: 1rem;
+$article-padding-horizontal: 1rem;
 
 @mixin font(
 	$color: inherit,
